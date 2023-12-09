@@ -1,0 +1,7 @@
+Tasks:
+1. Hearsay -> Approx. 65% accuracy on 4 techniques
+2. Proa -> Approx. 90% accuracy on 4 techniques
+
+Simple classification task like proa which does not require any reasoning and gives good result after onlt providing its definition.
+
+Classification tasks which require reasoning does not give a good accuracy, can be improved with ontologies.
