@@ -1,130 +1,42 @@
-# 📜 LegalBench
+# Legal Case Analysis Project
 
-<div align="center">
+This project uses a Large Language Model (LLM) to analyze legal cases and identify potential issues, such as hearsay. 
 
-The LegalBench project is an ongoing open science effort to collaboratively curate tasks for evaluating legal reasoning in English large language models (LLMs). The benchmark currently consists of 162 tasks gathered from 40 contributors.
+## Requirements
 
-[**Website**](https://hazyresearch.stanford.edu/legalbench/)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[**Data**](https://huggingface.co/datasets/nguha/legalbench)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[**Paper**](https://arxiv.org/abs/2308.11462)
-</div>
+* Python 3.8 or higher
+* Required Python packages are listed in `requirements.txt`. You can install them with `pip install -r requirements.txt`.
+* An OWL file (`LMSS.owl` is provided) containing legal ontology classes.
+* Access to a supported LLM. This project provides examples using Google Gemini Pro and Open Llama 7b.  
 
+## Configuration
 
-## What is LegalBench?
+1. **LLM Path:** Update the `LLM_PATH` variable in the Jupyter notebooks to point to the location of your LLM model.  
+2. **OWL File Path:** Make sure the `PATH_TO_OWL` variable correctly points to your OWL file. 
+3. **API Keys:** If you're using Google Gemini Pro, replace the placeholder `GOOGLE_API_KEY` with your actual API key.
 
-LegalBench is a benchmark consisting of different legal reasoning *tasks*. Each task has an associated *dataset*, consisting of input-output pairs. Examples of tasks include:
+## Running the Code
 
-- The [hearsay](./tasks/hearsay/README.md) task, for which the input is a description of some evidence and the output is whether or not that evidence would be considered hearsay (i.e., "Yes" or "No").
-- The [definition extraction](./tasks/definition_extraction/README.md) task, for which the input is a sentence (from a Supreme Court opinion) which defines a term, and the output is the term.
-- The [Rule QA](./tasks/rule_qa/README.md) task, for which the input is a question about the substance of a law, and the output is the correct answer to the question.
+The project includes multiple Jupyter notebooks demonstrating different LLM configurations and prompting techniques:
 
-Task datasets can be used to evaluate LLMs by providing the LLM with the input, and evaluating how frequently it generates the corresponding output. LegalBench tasks cover a wide range of textual types, task structures, legal domains, and difficulty levels. Descriptions of each task are available [here](./tasks/index.markdown).
+* `Final_Files/hearsay_LMSS_geminiapi.html`: This notebook uses Google Gemini Pro to determine whether a given legal statement constitutes hearsay.
+* `hearsay_LMSS_llama_instruct.html`: This notebook utilizes Open Llama 7b (instructed) to analyze legal statements for hearsay.
+* `hearsay_LMSS_gemma_instruct.html`: This notebook employs Gemma 7b (instructed) to classify legal statements as hearsay or not.
 
-Notably, LegalBench tasks have been assembled through a unique crowd-sourcing effort within the legal community. [Individuals and organizations](https://hazyresearch.stanford.edu/legalbench/#contributors) from a broad range of legal backgrounds---lawyers, computational legal practitioners, law professors, and legal impact labs---have contributed tasks they see as "interesting" or "useful." Interesting tasks are those that require a type of reasoning that the contributor deemed to be worth measuring. For instance, the task might correspond to one that law students are frequently expected to perform as part of assessments. Useful tasks correspond to processes that legal professionals currently engage in (either manually or through other means), and thus represent potential practical applications for LLMs.
+To run a notebook:
 
-**LegalBench is ongoing and we are always looking to incorporate more tasks. See [here](./contribute.markdown) for more information on how to get involved!**
+1. Open the notebook in a Jupyter environment.
+2. Update the configuration variables as described above.
+3. Execute the cells sequentially.
 
+## Output
 
-## Who are we?
+The notebooks generate responses from the LLM and evaluate its performance on a set of test cases. The results are also saved to CSV files (`hearsay_results.csv`, `scalr_results.csv`, `reasoning_casuality_results.csv`) for further analysis.
 
-We're an [interdisciplinary team]([#contributors](https://hazyresearch.stanford.edu/legalbench/#contributors)) of computer scientists and lawyers spanning academia and industry, interested in understanding the types of legal tasks that modern language models are capable of solving. To do so, we've been accumulating and constructing a diverse collection of legal NLP tasks---all of which are [available]([/legalbench/tasks/](https://hazyresearch.stanford.edu/legalbench/tasks/)) in this repository. We have two goals for this project:
+## Note
 
-1. First, we'd like to use these datasets to continually evaluate large language models for tasks involving legal reasoning and legal text. In particular, we're excited by the idea that the unique challenges posed by legal text may inspire new algorithmic innovations.
-2. Second, we'd like to use these datasets to guide legal practitioners and academics as they seek to understand to the safety and reliability implications of these models in their daily workflows.
+The code is provided as a starting point and may need to be adjusted depending on your specific requirements and the chosen LLM. Make sure to read the comments in the notebooks for guidance on how to modify the code.
+content_copy
+Use code with caution.
 
-Our approach to building LegalBench is inspired by contemporaneous open-science efforts for democratizing participation in machine learning development (e.g [HELM](https://crfm.stanford.edu/helm/latest/), [BigBench](https://github.com/google/BIG-bench)).
-
-
-## Contributing a task
-
-Please see [here](https://hazyresearch.stanford.edu/legalbench/contribute/) for more details.
-
-
-## Evaluating on LegalBench tasks
-
-Please see [here](https://hazyresearch.stanford.edu/legalbench/getting-started/) for more details.
-
-
-## Licenses
-
-LegalBench is a mix of created and transformed datasets. We ask that you follow the license of the dataset creator. Please see the [task page](https://github.com/HazyResearch/legalbench/tree/main/tasks) for a list of tasks and licenses.
-
-Please see the [notebook](https://github.com/HazyResearch/legalbench/blob/main/UsingLegalBench.ipynb) for an example of how to select tasks based on license information.
-
-## Citing this work
-
-Please include all citations below, which credit all sources LegalBench draws on.
-
-```text
-@misc{guha2023legalbench,
-      title={LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models}, 
-      author={Neel Guha and Julian Nyarko and Daniel E. Ho and Christopher Ré and Adam Chilton and Aditya Narayana and Alex Chohlas-Wood and Austin Peters and Brandon Waldon and Daniel N. Rockmore and Diego Zambrano and Dmitry Talisman and Enam Hoque and Faiz Surani and Frank Fagan and Galit Sarfaty and Gregory M. Dickinson and Haggai Porat and Jason Hegland and Jessica Wu and Joe Nudell and Joel Niklaus and John Nay and Jonathan H. Choi and Kevin Tobia and Margaret Hagan and Megan Ma and Michael Livermore and Nikon Rasumov-Rahe and Nils Holzenberger and Noam Kolt and Peter Henderson and Sean Rehaag and Sharad Goel and Shang Gao and Spencer Williams and Sunny Gandhi and Tom Zur and Varun Iyer and Zehua Li},
-      year={2023},
-      eprint={2308.11462},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
-}
-@article{koreeda2021contractnli,
-  title={ContractNLI: A dataset for document-level natural language inference for contracts},
-  author={Koreeda, Yuta and Manning, Christopher D},
-  journal={arXiv preprint arXiv:2110.01799},
-  year={2021}
-}
-@article{hendrycks2021cuad,
-  title={Cuad: An expert-annotated nlp dataset for legal contract review},
-  author={Hendrycks, Dan and Burns, Collin and Chen, Anya and Ball, Spencer},
-  journal={arXiv preprint arXiv:2103.06268},
-  year={2021}
-}
-@article{wang2023maud,
-  title={MAUD: An Expert-Annotated Legal NLP Dataset for Merger Agreement Understanding},
-  author={Wang, Steven H and Scardigli, Antoine and Tang, Leonard and Chen, Wei and Levkin, Dimitry and Chen, Anya and Ball, Spencer and Woodside, Thomas and Zhang, Oliver and Hendrycks, Dan},
-  journal={arXiv preprint arXiv:2301.00876},
-  year={2023}
-}
-@inproceedings{wilson2016creation,
-  title={The creation and analysis of a website privacy policy corpus},
-  author={Wilson, Shomir and Schaub, Florian and Dara, Aswarth Abhilash and Liu, Frederick and Cherivirala, Sushain and Leon, Pedro Giovanni and Andersen, Mads Schaarup and Zimmeck, Sebastian and Sathyendra, Kanthashree Mysore and Russell, N Cameron and others},
-  booktitle={Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
-  pages={1330--1340},
-  year={2016}
-}
-@inproceedings{zheng2021does,
-  title={When does pretraining help? assessing self-supervised learning for law and the casehold dataset of 53,000+ legal holdings},
-  author={Zheng, Lucia and Guha, Neel and Anderson, Brandon R and Henderson, Peter and Ho, Daniel E},
-  booktitle={Proceedings of the eighteenth international conference on artificial intelligence and law},
-  pages={159--168},
-  year={2021}
-}
-@article{zimmeck2019maps,
-  title={Maps: Scaling privacy compliance analysis to a million apps},
-  author={Zimmeck, Sebastian and Story, Peter and Smullen, Daniel and Ravichander, Abhilasha and Wang, Ziqi and Reidenberg, Joel R and Russell, N Cameron and Sadeh, Norman},
-  journal={Proc. Priv. Enhancing Tech.},
-  volume={2019},
-  pages={66},
-  year={2019}
-}
-@article{ravichander2019question,
-  title={Question answering for privacy policies: Combining computational and legal perspectives},
-  author={Ravichander, Abhilasha and Black, Alan W and Wilson, Shomir and Norton, Thomas and Sadeh, Norman},
-  journal={arXiv preprint arXiv:1911.00841},
-  year={2019}
-}
-@article{holzenberger2021factoring,
-  title={Factoring statutory reasoning as language understanding challenges},
-  author={Holzenberger, Nils and Van Durme, Benjamin},
-  journal={arXiv preprint arXiv:2105.07903},
-  year={2021}
-}
-@article{lippi2019claudette,
-  title={CLAUDETTE: an automated detector of potentially unfair clauses in online terms of service},
-  author={Lippi, Marco and Pa{\l}ka, Przemys{\l}aw and Contissa, Giuseppe and Lagioia, Francesca and Micklitz, Hans-Wolfgang and Sartor, Giovanni and Torroni, Paolo},
-  journal={Artificial Intelligence and Law},
-  volume={27},
-  pages={117--139},
-  year={2019},
-  publisher={Springer}
-}
-```
-
-## Contact
-
-For questions, concerns, or comments, please reach out to Neel (nguha@stanford.edu).
+This README explains how to run the code, including dependencies and configuration, and provides a brief overview of the project's functionality and output. Remember to replace the placeholders with your actual file paths and API keys before running the code.
