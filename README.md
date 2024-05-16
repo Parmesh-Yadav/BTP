@@ -1,11 +1,8 @@
-# Legal Case Analysis Project
-
-This project uses a Large Language Model (LLM) to analyze legal cases and identify potential issues, such as hearsay. 
+# BTP - LLMs & Prompt Engineering
 
 ## Requirements
 
 * Python 3.8 or higher
-* Required Python packages are listed in `requirements.txt`. You can install them with `pip install -r requirements.txt`.
 * An OWL file (`LMSS.owl` is provided) containing legal ontology classes.
 * Access to a supported LLM. This project provides examples using Google Gemini Pro and Open Llama 7b.  
 
@@ -23,7 +20,7 @@ The project includes multiple Jupyter notebooks demonstrating different LLM conf
 * `hearsay_LMSS_llama_instruct.html`: This notebook utilizes Open Llama 7b (instructed) to analyze legal statements for hearsay.
 * `hearsay_LMSS_gemma_instruct.html`: This notebook employs Gemma 7b (instructed) to classify legal statements as hearsay or not.
 
-To run a notebook:
+To run all the notebooks in a similar fashion:
 
 1. Open the notebook in a Jupyter environment.
 2. Update the configuration variables as described above.
@@ -31,12 +28,8 @@ To run a notebook:
 
 ## Output
 
-The notebooks generate responses from the LLM and evaluate its performance on a set of test cases. The results are also saved to CSV files (`hearsay_results.csv`, `scalr_results.csv`, `reasoning_casuality_results.csv`) for further analysis.
+The notebooks generate responses from the LLM and evaluate its performance on a set of test cases. The results are also saved to CSV files (`Final_Files/hearsay_results.csv`, `Final_Files/scalr_results.csv`, `Final_Files/reasoning_casuality_results.csv`) for further analysis.
 
 ## Note
 
 The code is provided as a starting point and may need to be adjusted depending on your specific requirements and the chosen LLM. Make sure to read the comments in the notebooks for guidance on how to modify the code.
-content_copy
-Use code with caution.
-
-This README explains how to run the code, including dependencies and configuration, and provides a brief overview of the project's functionality and output. Remember to replace the placeholders with your actual file paths and API keys before running the code.
