@@ -16,9 +16,9 @@
 
 The project includes multiple Jupyter notebooks demonstrating different LLM configurations and prompting techniques:
 
-* `Final_Files/hearsay_LMSS_geminiapi.html`: This notebook uses Google Gemini Pro to determine whether a given legal statement constitutes hearsay.
-* `hearsay_LMSS_llama_instruct.html`: This notebook utilizes Open Llama 7b (instructed) to analyze legal statements for hearsay.
-* `hearsay_LMSS_gemma_instruct.html`: This notebook employs Gemma 7b (instructed) to classify legal statements as hearsay or not.
+* `Final_Files/hearsay_LMSS_geminiapi.ipynb`: This notebook uses Google Gemini Pro to determine whether a given legal statement constitutes hearsay.
+* `hearsay_LMSS_llama_instruct.ipynb`: This notebook utilizes Open Llama 7b (instructed) to analyze legal statements for hearsay.
+* `hearsay_LMSS_gemma_instruct.ipynb`: This notebook employs Gemma 7b (instructed) to classify legal statements as hearsay or not.
 
 To run all the notebooks in a similar fashion:
 
